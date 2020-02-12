@@ -35,7 +35,7 @@ const LetterBox = styled.div`
       line-height: 1;
       font-size: 1.8rem;
       text-transform: uppercase;
-      color: #dcdcdc;
+      color: #c0c0c0;
     }
   }
 `;
