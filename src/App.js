@@ -51,14 +51,14 @@ function App() {
 
     if (!oneStepBack && !twoStepsBack) {
       arm = arms[randomNumber(0, 2)];
-    } else if ((oneStepBack === twoStepsBack && index === dIndex - 1) || index === iIndex - 1 || index === jIndex - 1) {
+    } else if (index === dIndex - 1 || index === iIndex - 1 || index === jIndex - 1) {
       do {
         arm = arms[randomNumber(0, 2)];
-      } while (arm === twoStepsBack);
+      } while (arm === oneStepBack);
     } else if (oneStepBack === twoStepsBack) {
       do {
         arm = arms[randomNumber(0, 2)];
-      } while (arm === twoStepsBack);
+      } while (arm === oneStepBack);
     } else {
       arm = arms[randomNumber(0, 2)];
     }
