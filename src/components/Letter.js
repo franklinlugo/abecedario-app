@@ -30,7 +30,7 @@ const StyledLetter = styled.span`
 
 const StyledArm = styled.span`
   line-height: 1;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   color: #c0c0c0;
 `;

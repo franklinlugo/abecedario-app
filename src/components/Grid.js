@@ -1,48 +1,49 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { Letter } from './Letter';
+import { random } from '../utils';
 
 const StyledGrid = styled.main`
   display: grid;
-  grid-template-columns: repeat(5, 150px);
+  grid-template-columns: repeat(5, 100px);
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
   padding: 1rem;
 `;
 
 export function Grid() {
-  function randomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
   const getRandomArm = useCallback((oneStepBack, twoStepsBack, index, dIndex, iIndex, jIndex) => {
     let arm;
     const arms = ['i', 'd', 'j'];
 
+    // prevs steps ae different
     if (!oneStepBack && !twoStepsBack) {
-      arm = arms[randomNumber(0, 2)];
-    } else if (index === dIndex - 1 || index === iIndex - 1 || index === jIndex - 1) {
+      arm = random(arms);
+    }
+    // index immediately before of d, i, o j
+    else if ([dIndex - 1, iIndex - 1, jIndex - 1].includes(index)) {
       do {
-        arm = arms[randomNumber(0, 2)];
+        arm = random(arms);
       } while (arm === oneStepBack);
-    } else if (oneStepBack === twoStepsBack) {
+    }
+    // prev steps are iqual
+    else if (oneStepBack === twoStepsBack) {
       do {
-        arm = arms[randomNumber(0, 2)];
+        arm = random(arms);
       } while (arm === oneStepBack);
-    } else {
-      arm = arms[randomNumber(0, 2)];
+    }
+    // it's ok
+    else {
+      arm = random(arms);
     }
     return arm;
   }, []);
 
-  const letters = 'abcdefghijklmnopqrstuvxyz';
-
   const [values, setValues] = useState([]);
 
+  // create an object {letter: a, arm: d}
   const generateValues = useCallback(() => {
-    const initialValues = letters.split('').map(letter => {
-      return { letter, arm: null };
-    });
+    const initialValues = Array.from('abcdefghijklmnopqrstuvxyz').map(letter => ({ letter, arm: null }));
 
     const valuesWithFixedLetters = initialValues.map(({ letter }) => {
       switch (letter) {
