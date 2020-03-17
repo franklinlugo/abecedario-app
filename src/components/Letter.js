@@ -39,7 +39,7 @@ export function Letter({ letter, arm }) {
   return (
     <Container>
       <Content>
-        <StyledLetter>{letter}</StyledLetter>
+        <StyledLetter data-testid={letter}>{letter}</StyledLetter>
         <StyledArm>{arm}</StyledArm>
       </Content>
     </Container>
