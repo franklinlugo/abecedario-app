@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { GlobalStyles } from './globalStyles';
+import { Letter } from './components/Letter';
 
 const StyledApp = styled.main`
   display: grid;
@@ -8,36 +9,6 @@ const StyledApp = styled.main`
   justify-content: center;
   gap: 1rem;
   padding: 1rem;
-`;
-
-const LetterBox = styled.div`
-  position: relative;
-  height: 0;
-  padding-top: 100%;
-  border: 1px solid #dcdcdc;
-  .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .letter {
-      margin: 0 0 0.5rem 0;
-      line-height: 1;
-      font-size: 2.5rem;
-      text-transform: uppercase;
-    }
-    .arm {
-      line-height: 1;
-      font-size: 1.8rem;
-      text-transform: uppercase;
-      color: #c0c0c0;
-    }
-  }
 `;
 
 function App() {
@@ -122,12 +93,7 @@ function App() {
       <GlobalStyles />
       <StyledApp>
         {values.map(({ letter, arm }) => (
-          <LetterBox key={letter}>
-            <div className="content">
-              <span className="letter">{letter}</span>
-              <span className="arm">{arm}</span>
-            </div>
-          </LetterBox>
+          <Letter key={letter} letter={letter} arm={arm} />
         ))}
       </StyledApp>
     </>
