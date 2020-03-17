@@ -20,7 +20,7 @@ export function Grid() {
     if (!oneStepBack && !twoStepsBack) {
       arm = random(arms);
     }
-    // index immediately before of d, i, o j
+    // index immediately before of d, i, o j index
     else if ([dIndex - 1, iIndex - 1, jIndex - 1].includes(index)) {
       do {
         arm = random(arms);
